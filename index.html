@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body id="body" onload="update()">
+    <h1 id="coneCounter">0</h1>
+    <h1 id="coneHeader">cones!
+        <div id="perSecond">per second:<div id="rate">0</div></div>
+    </h1>
+    <div id="cone" onmousedown="coneClicked()"></div>
+    <div id="border"></div>
+    <div id="yoonseo"></div>
+    <div id="store">
+        <div id="coneGen" class="building" onmouseenter="hover(this)" onmouseleave="dim(this)">
+            Cone Generator
+            <div id="coneGenLabel" class="label"><div id="coneGenCost" class="cost">15</div><div style="display: inline;"> cookies ---- Amount: </div> <div id="coneGenNum" class="num">0</div></div>
+        </div>
+        <div id="kitchen" class="building" onmouseenter="hover(this)" onmouseleave="dim(this)">
+            Kaichang's Cone Kitchen
+            <div id="kitchenLabel" class="label"><div id="kitchenCost" class="cost">100</div><div style="display: inline;"> cookies ---- Amount: </div> <div id="kitchenNum" class="num">0</div></div>
+        </div>
+        <div id="class" class="building" onmouseenter="hover(this)" onmouseleave="dim(this)">
+            Maestro Belwal's Class
+            <div id="classLabel" class="label"><div id="classCost" class="cost">1000</div><div style="display: inline;"> cookies ---- Amount: </div> <div id="classNum" class="num">0</div></div>
+        </div>
+    </div>
+    <h1 id="cheatCode" onclick="addCones(100)">Free 100 cones!</h1>
+</body>
+</html>
