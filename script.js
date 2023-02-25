@@ -52,6 +52,8 @@ let classCost = 1000;
 let classCount = 0;
 let aquaCost = 12000;
 let aquaCount = 0;
+let domeCost = 130000
+let domeCount = 0;
 function update(){
     const cone = document.getElementById("cone");
     //store functions:
@@ -86,6 +88,14 @@ function update(){
         document.getElementById("aquaNum").innerHTML = aquaCount;
         document.getElementById("aquaCost").innerHTML = aquaCost;
         rate += 47;
+    }
+    function domeGen(){
+        score -= domeCost;
+        domeCost = Math.floor(domeCost * 1.15);
+        domeCount++;
+        document.getElementById("domeNum").innerHTML = domeCount;
+        document.getElementById("domeCost").innerHTML = domeCost;
+        rate += 260;
     }
     setInterval(changeScore, 5);
     setInterval(coneUpgrade, 5);
@@ -225,12 +235,14 @@ function update(){
     const kitchen = document.getElementById("kitchen");
     const belwalClass = document.getElementById("class");
     const aqua = document.getElementById("aqua");
+    const dome = document.getElementById("dome");
     let coneGencheck = false;
     function check(){
         shops(coneGen, coneGenCost, coneGenerator);
         shops(kitchen, kitchenCost, kitchenGen);
         shops(belwalClass, classCost, classGen);
         shops(aqua, aquaCost, aquaGen);
+        shops(dome, domeCost, domeGen);
     }
 }
 function shops(element, cost, funct){
