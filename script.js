@@ -50,6 +50,8 @@ let kitchenCost = 100;
 let kitchenCount = 0;
 let classCost = 1000;
 let classCount = 0;
+let aquaCost = 12000;
+let aquaCount = 0;
 function update(){
     const cone = document.getElementById("cone");
     //store functions:
@@ -77,6 +79,14 @@ function update(){
         document.getElementById("classCost").innerHTML = classCost;
         rate += 8;
     }
+    function aquaGen(){
+        score -= aquaCost;
+        aquaCost = Math.floor(aquaCost * 1.15);
+        aquaCount++;
+        document.getElementById("aquaNum").innerHTML = aquaCount;
+        document.getElementById("aquaCost").innerHTML = aquaCost;
+        rate += 47;
+    }
     setInterval(changeScore, 5);
     setInterval(coneUpgrade, 5);
     setInterval(check, 5);
@@ -88,13 +98,51 @@ function update(){
         counter.innerHTML = Math.floor(score);
         header.style.left = 48 + calcDigits(Math.floor(score))/2 + "%";
         counter.style.left = 48 - calcDigits(Math.floor(score))/2 + "%";
-        document.getElementById("rate").innerHTML = Math.round(rate*10)/10;
+        const rateEl = document.getElementById("rate").innerHTML = Math.round(rate*10)/10;
+        rateEl.style.left = 48 - calcDigits(Math.floor(score))/2 + "%";
     }
     let color = "white";
     function coneUpgrade(){
         const points = document.getElementsByClassName("point");
         for(let i = 0; i < points.length; i++){
             points[i].style.color = color;
+        }
+        if(score >= 100 && upgrading == 0){
+            upgrading++;
+            const upgrade = document.createElement("h1");
+            const text = document.createTextNode("UPGRADE!");
+            upgrade.appendChild(text);
+            document.getElementById("body").appendChild(upgrade);
+            const info = document.createElement("p");
+            const node = document.createTextNode("Rate increases by 1!");
+            rate += 1;
+            info.appendChild(node);
+            upgrade.appendChild(info);
+            upgrade.style.position = "absolute";
+            upgrade.style.left = 35 + "%";
+            upgrade.style.top = 0 + "%";
+            upgrade.style.opacity = 2;
+            upgrade.style.fontSize = 80 + "px";
+            upgrade.style.color = "red";
+            info.style.fontSize = 30 + "px";
+            info.style.position = "absolute";
+            info.style.left = 20 + "%";
+            let pos = 0;
+            let id = setInterval(move, 20);
+            function move(){
+                if(pos >= 100){
+                    upgrade.remove();
+                    clearInterval(id);
+                }
+                else{
+                    upgrade.style.top = pos + "%";
+                    pos++;
+                }
+            }
+            cone.style.clipPath = "polygon(26% 85%,26% 18%, 20% 14%, 78% 14%, 72% 18%, 72% 50%, 72% 85%)";
+            cone.style.backgroundImage = "url(https://lh3.googleusercontent.com/asSW8Nu-QJc1-rZaxGYVTytF_KPTRMwC47FOaC4BkCZDu0M-KP-Oq98mSx9uvNiboylrSCyJbkD3AxJhMV6Rdyx10AWW-bH84YCqr03_PHgVXZL-HPHGANMGZKXBs50tz7CbnvrvdQ=w2400)";
+            cone.style.backgroundColor = "rgba(255,255,255,0)";
+            color = "white";
         }
         if(score >= 1000 && upgrading == 1){
             cone.style.backgroundImage = "url(https://i.ibb.co/93qs5Sg/output-onlinepngtools-4.png)";
@@ -138,15 +186,14 @@ function update(){
             color = "blue";
             upgrading++;
         }
-        else if(score >= 100 && upgrading == 0){
-            upgrading++;
+        if(score >= 10000 && upgrading == 2){
             const upgrade = document.createElement("h1");
-            const text = document.createTextNode("UPGRADE!");
+            const text = document.createTextNode("UPGRADE 3!");
             upgrade.appendChild(text);
             document.getElementById("body").appendChild(upgrade);
             const info = document.createElement("p");
-            const node = document.createTextNode("Rate increases by 1!");
-            rate += 1;
+            const node = document.createTextNode("Rate doubles by 2!");
+            rate *= 2;
             info.appendChild(node);
             upgrade.appendChild(info);
             upgrade.style.position = "absolute";
@@ -154,12 +201,12 @@ function update(){
             upgrade.style.top = 0 + "%";
             upgrade.style.opacity = 2;
             upgrade.style.fontSize = 80 + "px";
-            upgrade.style.color = "red";
+            upgrade.style.color = "blue";
             info.style.fontSize = 30 + "px";
             info.style.position = "absolute";
             info.style.left = 20 + "%";
             let pos = 0;
-            let id = setInterval(move, 20);
+            let id = setInterval(move, 50);
             function move(){
                 if(pos >= 100){
                     upgrade.remove();
@@ -170,20 +217,20 @@ function update(){
                     pos++;
                 }
             }
-            cone.style.clipPath = "polygon(26% 85%,26% 18%, 20% 14%, 78% 14%, 72% 18%, 72% 50%, 72% 85%)";
-            cone.style.backgroundImage = "url(https://lh3.googleusercontent.com/asSW8Nu-QJc1-rZaxGYVTytF_KPTRMwC47FOaC4BkCZDu0M-KP-Oq98mSx9uvNiboylrSCyJbkD3AxJhMV6Rdyx10AWW-bH84YCqr03_PHgVXZL-HPHGANMGZKXBs50tz7CbnvrvdQ=w2400)";
-            cone.style.backgroundColor = "rgba(255,255,255,0)";
-            color = "white";
+            color = "blue";
+            upgrading++;
         }
     }
     const coneGen = document.getElementById("coneGen");
     const kitchen = document.getElementById("kitchen");
     const belwalClass = document.getElementById("class");
+    const aqua = document.getElementById("aqua");
     let coneGencheck = false;
     function check(){
         shops(coneGen, coneGenCost, coneGenerator);
         shops(kitchen, kitchenCost, kitchenGen);
         shops(belwalClass, classCost, classGen);
+        shops(aqua, aquaCost, aquaGen);
     }
 }
 function shops(element, cost, funct){

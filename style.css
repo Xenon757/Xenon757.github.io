@@ -110,7 +110,10 @@ body{
     color: white;
 }
 #cheatCode{
-    font-size: 15px;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    font-size: 5px;
     z-index: 3;
 }
 .point{
@@ -119,4 +122,11 @@ body{
 #kitchen{
     font-size: 25px;
     background-image: url(https://lh3.googleusercontent.com/6CnRrgpzeFQ2jFBaRUNjr-OVZsOxq3D617B0L05z2kf526cghif3b3qvcPSEOLCFKELHseZaLbXi5uFc7A1DFw2x9mvORjUnbUlpgtgX3kJENDX5lin_dAuzAgf_bb0Uun3qdBUC2Q=w2400), url(https://lh3.googleusercontent.com/HEhY9nxd8Wc-vQAqF0I2fNVwHEgQllpj1bPU8rZN8J1raM_9yavOAAgdKz1E_BQ4Bk0g6UovP6sKocBjhLvbGUaL71PXLyzRIKPcc45DZ451UGxg_mqqbslxqwH6HfsqNYWRxxH0iQ=w2400);
+}
+#class{
+    font-size: 25px;
+    background-image: url(https://lh3.googleusercontent.com/RuTK_8bATQzrNUvaeMQsd9br84iOFhDqwnllAVmOepsUgn4H8KLyw7ncUAAeFemqDBleRuYAFMa5FH07QnSBNnSvzLhJQBh5kFAM58n3kPWVGGvGPWapcPbytZgDKCKnkPY-fYsAwg=w2400), url(https://lh3.googleusercontent.com/HEhY9nxd8Wc-vQAqF0I2fNVwHEgQllpj1bPU8rZN8J1raM_9yavOAAgdKz1E_BQ4Bk0g6UovP6sKocBjhLvbGUaL71PXLyzRIKPcc45DZ451UGxg_mqqbslxqwH6HfsqNYWRxxH0iQ=w2400);
+}
+#aqua{
+    font-size: 25px;
 }
