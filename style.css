@@ -1,0 +1,122 @@
+#cone{
+    background-color: black;
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Cone_with_labeled_Radius%2C_Height%2C_Angle_and_Side.svg/1200px-Cone_with_labeled_Radius%2C_Height%2C_Angle_and_Side.svg.png);
+    background-size: cover;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 50%;
+    width: 25%;
+    z-index: 1;
+    clip-path: polygon(50% 2%, 100% 88%, 0% 88%);
+}
+#yoonseo{
+    position: absolute;
+}
+#yoonseo p{
+    position: absolute;
+    height: 2.5%;
+    width: 1.5%;
+    left: 180px;
+    top: 160px;
+    color: white;
+    background-color: aqua;
+    z-index: 2;
+}
+#coneCounter{
+    position: absolute;
+    left: 50%;
+    color: white;
+}
+#coneHeader{
+    position: absolute;
+    left: 52%;
+    display: inline;
+    color: white;
+}
+#border{
+    background-size: cover;
+    position: absolute;
+    left: 25%;
+    top: 0px;
+    height: 100%;
+    width: .5%;
+    background-color: black;
+    background-image: url(https://lh3.googleusercontent.com/8uHj90FBqkddhnZq1yjoJAbRSBMvPOoqOJvKbG3bsZG7hpADGBPQ7V4XaJpJwOJwf1bj-Zo8uCmJqjora-fh_4EGKkUf1N62nwaitVfycBGoMKM3JPk-VBjlxvHBaEa0bwnObEkYXw=w2400);
+    z-index: -1;
+}
+body{
+    background-size: 25%;
+    background-repeat: repeat;
+    background-image: url(https://lh3.googleusercontent.com/leqxh1uoLPpSPjd50ltyf8Z9TBz_nXwGjNtpTxp5q2VqE98jk_YOzyJCyLReloWjpB_Thk7mCHcFIGZ_FT4u03ap8jzXGyL2D5xiLy7VR9FuuLxaCG2Stolvxvovk4LW0dzpRmOKzA=w2400);
+}
+#store{
+    background-color: black;
+    position: absolute;
+    width: 25%;
+    height: 100%;
+    left: 75%;
+    top: 0px;
+}
+.building{
+    opacity: .5;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black;
+    border-right-width: 0px;
+    font-weight: 900;
+    color: white;
+    font-size: 30px;
+    padding-top: 2%;
+    padding-left: 2.5%;
+    top: 0px;
+    background-color: white;
+    height: 8%;
+    background-image: url(https://lh3.googleusercontent.com/A-LRgFxURk1TJJdrrAouIZgx9vr6oUetpPijWF-u1tVDFySrgpVaBIxWhDWD549cA5KFiHwUd3WRyulm2Xedw-wCmkggoLBog9q_ZDrgnFAm170r1B0TZok9oDBdz8DPWjK6GRHsYQ=w2400), url(https://lh3.googleusercontent.com/HEhY9nxd8Wc-vQAqF0I2fNVwHEgQllpj1bPU8rZN8J1raM_9yavOAAgdKz1E_BQ4Bk0g6UovP6sKocBjhLvbGUaL71PXLyzRIKPcc45DZ451UGxg_mqqbslxqwH6HfsqNYWRxxH0iQ=w2400);
+    background-size: contain, cover;
+    background-repeat: no-repeat, no-repeat;
+    background-position-x: 100%;
+}
+.label{
+    font-size: 15px;
+    font-weight: 100;
+    color: white;
+}
+.num{
+    font-size: 15px;
+    font-weight: 100;
+    display: inline;
+    color: white;
+}
+#rate{
+    display: inline;
+    margin: 10px;
+    font-size: 25px;
+    color: white;
+}
+#perSecond{
+    position: relative;
+    left: -30%;
+    font-size: 25px;
+    color: white;
+}
+.cost{
+    font-size: 15px;
+    font-weight: 100;
+    display: inline;
+    color: white;
+}
+#cheatCode{
+    font-size: 15px;
+    z-index: 3;
+}
+.point{
+    color: white;
+}
+#kitchen{
+    font-size: 25px;
+    background-image: url(https://lh3.googleusercontent.com/6CnRrgpzeFQ2jFBaRUNjr-OVZsOxq3D617B0L05z2kf526cghif3b3qvcPSEOLCFKELHseZaLbXi5uFc7A1DFw2x9mvORjUnbUlpgtgX3kJENDX5lin_dAuzAgf_bb0Uun3qdBUC2Q=w2400), url(https://lh3.googleusercontent.com/HEhY9nxd8Wc-vQAqF0I2fNVwHEgQllpj1bPU8rZN8J1raM_9yavOAAgdKz1E_BQ4Bk0g6UovP6sKocBjhLvbGUaL71PXLyzRIKPcc45DZ451UGxg_mqqbslxqwH6HfsqNYWRxxH0iQ=w2400);
+}
