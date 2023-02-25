@@ -1,0 +1,233 @@
+let score = 0;
+let rate = 0;
+function coneClicked(){
+    const cone = document.getElementById("cone");
+    const point = document.createElement("p");
+    const node = document.createTextNode("+1");
+    point.setAttribute("class", "point");
+    point.appendChild(node);
+    const yoonseo = document.getElementById("yoonseo");
+    yoonseo.appendChild(point);
+    let scale = 50;
+    let cycle = false;
+    let id = null;
+    id = setInterval(bump, 5);
+    function bump(){
+        if(cycle == 1 && scale == 51){
+            clearInterval(id);
+        }
+        else if(scale == 45 || cycle){
+            cone.style.width = scale/2 + "%";
+            cone.style.height = scale + "%";
+            scale++;
+            cycle = true;
+        }
+        else{
+            cone.style.width = scale/2 + "%";
+            cone.style.height = scale + "%";
+            scale--;
+        }
+    }
+    let pos = 180;
+    let id2 = null;
+    id2 = setInterval(move, 5);
+    function move(){
+        pos--;
+        if(pos == 0){
+            clearInterval(id2);
+            point.remove();
+        }
+        else{
+            point.style.top = pos + "px";
+        }
+    }
+    score++;
+}
+//store variables:
+let coneGenCount = 0;
+let coneGenCost = 15;
+let kitchenCost = 100;
+let kitchenCount = 0;
+let classCost = 1000;
+let classCount = 0;
+function update(){
+    const cone = document.getElementById("cone");
+    //store functions:
+    function coneGenerator(){
+        score -= coneGenCost;
+        coneGenCost = Math.floor(coneGenCost * 1.15);
+        coneGenCount++;
+        document.getElementById("coneGenNum").innerHTML = coneGenCount;
+        document.getElementById("coneGenCost").innerHTML = coneGenCost;
+        rate += .1;
+    }
+    function kitchenGen(){
+        score -= kitchenCost;
+        kitchenCost = Math.floor(kitchenCost * 1.15);
+        kitchenCount++;
+        document.getElementById("kitchenNum").innerHTML = kitchenCount;
+        document.getElementById("kitchenCost").innerHTML = kitchenCost;
+        rate += 1;
+    }
+    function classGen(){
+        score -= classCost;
+        classCost = Math.floor(classCost * 1.15);
+        classCount++;
+        document.getElementById("classNum").innerHTML = classCount;
+        document.getElementById("classCost").innerHTML = classCost;
+        rate += 8;
+    }
+    setInterval(changeScore, 5);
+    setInterval(coneUpgrade, 5);
+    setInterval(check, 5);
+    let upgrading = 0;
+    function changeScore(){
+        const counter = document.getElementById("coneCounter");
+        const header = document.getElementById("coneHeader");
+        score += rate/200;
+        counter.innerHTML = Math.floor(score);
+        header.style.left = 48 + calcDigits(Math.floor(score))/2 + "%";
+        counter.style.left = 48 - calcDigits(Math.floor(score))/2 + "%";
+        document.getElementById("rate").innerHTML = Math.round(rate*10)/10;
+    }
+    let color = "white";
+    function coneUpgrade(){
+        const points = document.getElementsByClassName("point");
+        for(let i = 0; i < points.length; i++){
+            points[i].style.color = color;
+        }
+        if(score >= 1000 && upgrading == 1){
+            cone.style.backgroundImage = "url(https://i.ibb.co/93qs5Sg/output-onlinepngtools-4.png)";
+            cone.style.clipPath = "polygon(0% 100%, 0% 0%, 100% 0%, 100% 100%)";
+            const upgrade = document.createElement("h1");
+            const text = document.createTextNode("UPGRADE 2!");
+            upgrade.appendChild(text);
+            document.getElementById("body").appendChild(upgrade);
+            upgrade.style.position = "absolute";
+            upgrade.style.left = 35 + "%";
+            upgrade.style.top = 0 + "%";
+            upgrade.style.opacity = 2;
+            upgrade.style.fontSize = 80 + "px";
+            upgrade.style.color = "red";
+            const info = document.createElement("p");
+            const node = document.createTextNode("Rate increases by 2!");
+            rate += 2;
+            info.appendChild(node);
+            upgrade.appendChild(info);
+            upgrade.style.position = "absolute";
+            upgrade.style.left = 35 + "%";
+            upgrade.style.top = 0 + "%";
+            upgrade.style.opacity = 2;
+            upgrade.style.fontSize = 80 + "px";
+            upgrade.style.color = "red";
+            info.style.fontSize = 30 + "px";
+            info.style.position = "absolute";
+            info.style.left = 20 + "%";
+            let pos = 0;
+            let id = setInterval(move, 40);
+            function move(){
+                if(pos >= 100){
+                    upgrade.remove();
+                    clearInterval(id);
+                }
+                else{
+                    upgrade.style.top = pos + "%";
+                    pos++;
+                }
+            }
+            color = "blue";
+            upgrading++;
+        }
+        else if(score >= 100 && upgrading == 0){
+            upgrading++;
+            const upgrade = document.createElement("h1");
+            const text = document.createTextNode("UPGRADE!");
+            upgrade.appendChild(text);
+            document.getElementById("body").appendChild(upgrade);
+            const info = document.createElement("p");
+            const node = document.createTextNode("Rate increases by 1!");
+            rate += 1;
+            info.appendChild(node);
+            upgrade.appendChild(info);
+            upgrade.style.position = "absolute";
+            upgrade.style.left = 35 + "%";
+            upgrade.style.top = 0 + "%";
+            upgrade.style.opacity = 2;
+            upgrade.style.fontSize = 80 + "px";
+            upgrade.style.color = "red";
+            info.style.fontSize = 30 + "px";
+            info.style.position = "absolute";
+            info.style.left = 20 + "%";
+            let pos = 0;
+            let id = setInterval(move, 20);
+            function move(){
+                if(pos >= 100){
+                    upgrade.remove();
+                    clearInterval(id);
+                }
+                else{
+                    upgrade.style.top = pos + "%";
+                    pos++;
+                }
+            }
+            cone.style.clipPath = "polygon(26% 85%,26% 18%, 20% 14%, 78% 14%, 72% 18%, 72% 50%, 72% 85%)";
+            cone.style.backgroundImage = "url(https://lh3.googleusercontent.com/asSW8Nu-QJc1-rZaxGYVTytF_KPTRMwC47FOaC4BkCZDu0M-KP-Oq98mSx9uvNiboylrSCyJbkD3AxJhMV6Rdyx10AWW-bH84YCqr03_PHgVXZL-HPHGANMGZKXBs50tz7CbnvrvdQ=w2400)";
+            cone.style.backgroundColor = "rgba(255,255,255,0)";
+            color = "white";
+        }
+    }
+    const coneGen = document.getElementById("coneGen");
+    const kitchen = document.getElementById("kitchen");
+    const belwalClass = document.getElementById("class");
+    let coneGencheck = false;
+    function check(){
+        shops(coneGen, coneGenCost, coneGenerator);
+        shops(kitchen, kitchenCost, kitchenGen);
+        shops(belwalClass, classCost, classGen);
+    }
+}
+function shops(element, cost, funct){
+    let buildingCheck = false;
+    if(score >= cost){
+        if(!buildingCheck){
+            element.style.opacity = .9;
+            buildingCheck = true;
+        }
+        element.addEventListener("click", funct);
+    }
+    else{
+        element.removeEventListener("click", funct);
+        buildingCheck = false;
+        element.style.opacity = .5;
+    }
+}
+
+function setScore(num){
+    score = num;
+}
+function addCones(num){
+    score += num;
+}
+
+function hover(element){
+    if(element.style.opacity >= .9){
+        element.style.opacity = 1;
+    }
+}
+function dim(element){
+    if(element.style.opacity == 1){
+        element.style.opacity = .9;
+    }
+}
+function calcDigits(num){
+    let digit = 1;
+    num += 0.05;
+    while(num > 0){
+        num = Math.floor(num/10);
+        digit++;
+    }
+    return digit;
+}
+function round(num, digit){
+    return (Math.floor(num * Math.pow(10, digit)))/10**digit;
+}
