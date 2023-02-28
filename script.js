@@ -41,7 +41,7 @@ function coneClicked() {
   score++;
 }
 //goldenCone chances:
-let testCone = 90;
+let testCone = 3;
 //store variables:
 let coneGenCount = 0;
 let coneGenCost = 15;
@@ -58,25 +58,29 @@ let castleCount = 0;
 let factoryCost = 20 * 10 ** 6;
 let factoryCount = 0;
 function goldenCone() {
-  let width = 0.125;
-  const test = document.createElement("div");
-  test.setAttribute("class", "goldenCone");
-  body.appendChild(test);
-  let id = setInterval(goldenMove, 100);
-  let cycle = 1;
-  function goldenMove() {
-    if (width <= 0.125 && cycle == -1) {
-      clearInterval(id);
-      test.remove();
-    } else if (width >= 25) {
-      cycle = -1;
-      width += cycle;
-    } else {
-      test.style.width = width + "%";
-      test.style.height = 2 * width + "%";
-      test.style.top += cycle * 5 + "%";
-      test.style.left += cycle * 5 + "%";
-      width += cycle;
+  if (Math.random() * 100 <= testCone) {
+    let posX = Math.random() * 100;
+    let posY = Math.random() * 100;
+    let width = 0.125;
+    const test = document.createElement("div");
+    test.setAttribute("class", "goldenCone");
+    body.appendChild(test);
+    test.style.top = posX + "%";
+    test.style.left = posY + "%";
+    let id = setInterval(goldenMove, 100);
+    let cycle = 1;
+    function goldenMove() {
+      if (width <= 0.125 && cycle == -1) {
+        clearInterval(id);
+        test.remove();
+      } else if (width >= 25) {
+        cycle = -1;
+        width += cycle;
+      } else {
+        test.style.width = width + "%";
+        test.style.height = 2 * width + "%";
+        width += cycle;
+      }
     }
   }
 }
@@ -84,7 +88,7 @@ function update() {
   const cone = document.getElementById("cone");
   const body = document.getElementById("body");
   //golden cone functions:
-  setInterval(goldenCone, 10000);
+  setInterval(goldenCone, 1000);
   //store functions:
   function coneGenerator() {
     score -= coneGenCost;
