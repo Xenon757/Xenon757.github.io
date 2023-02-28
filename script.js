@@ -104,7 +104,7 @@ function update(){
     function changeScore(){
         const counter = document.getElementById("coneCounter");
         const header = document.getElementById("coneHeader");
-        score += rate/200;
+        score += rate/150;
         counter.innerHTML = Math.floor(score);
         header.style.left = 48 + calcDigits(Math.floor(score))/2 + "%";
         counter.style.left = 48 - calcDigits(Math.floor(score))/2 + "%";
