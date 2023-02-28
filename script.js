@@ -41,7 +41,7 @@ function coneClicked() {
   score++;
 }
 //goldenCone chances:
-let testCone = 3;
+let frenzy = 5;
 //store variables:
 let coneGenCount = 0;
 let coneGenCost = 15;
@@ -58,13 +58,14 @@ let castleCount = 0;
 let factoryCost = 20 * 10 ** 6;
 let factoryCount = 0;
 function goldenCone() {
-  if (Math.random() * 100 <= testCone) {
+  if (Math.random() * 100 <= frenzy) {
     let posX = Math.random() * 100;
     let posY = Math.random() * 100;
     let width = 0.125;
     const test = document.createElement("div");
     test.setAttribute("class", "goldenCone");
     body.appendChild(test);
+    test.addEventListener("click", frenzyCone);
     test.style.top = posX + "%";
     test.style.left = posY + "%";
     let id = setInterval(goldenMove, 100);
@@ -80,6 +81,25 @@ function goldenCone() {
         test.style.width = width + "%";
         test.style.height = 2 * width + "%";
         width += cycle;
+      }
+    }
+    function frenzyCone() {
+      test.removeEventListener("click", frenzyCone);
+      let clicked = true;
+      let time = 0;
+      if (rate != 0) {
+        let id = setInterval(buff, 1000);
+      }
+      let newRate = rate * 7;
+      function buff() {
+        time++;
+        if (time == 60) {
+          clearInterval(id);
+          rate /= 7;
+        }
+        else {
+          rate = newRate;
+        }
       }
     }
   }
