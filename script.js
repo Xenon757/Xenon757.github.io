@@ -54,6 +54,10 @@ let aquaCost = 12000;
 let aquaCount = 0;
 let domeCost = 130000
 let domeCount = 0;
+let castleCost = 1.4 * 10**6
+let castleCount = 0;
+let factoryCost = 20 * 10**6;
+let factoryCount = 0;
 function update(){
     const cone = document.getElementById("cone");
     //store functions:
@@ -96,6 +100,22 @@ function update(){
         document.getElementById("domeNum").innerHTML = domeCount;
         document.getElementById("domeCost").innerHTML = domeCost;
         rate += 260;
+    }
+    function castleGen(){
+        score -= castleCost;
+        castleCost = Math.floor(castleCost * 1.15);
+        castleCount++;
+        document.getElementById("castleNum").innerHTML = castleCount;
+        document.getElementById("castleCost").innerHTML = Math.round(castleCost/10**6 * 10)/10 + " million";
+        rate += 1400;
+    }
+    function factoryGen(){
+        score -= factoryCost;
+        factoryCost = Math.floor(factoryCost * 1.15);
+        factoryCount++;
+        document.getElementById("factoryNum").innerHTML = factoryCount;
+        document.getElementById("factoryCost").innerHTML = Math.round(factoryCost/10**6 * 10)/10 + " million";
+        rate += 7800;
     }
     setInterval(changeScore, 5);
     setInterval(coneUpgrade, 5);
@@ -236,6 +256,8 @@ function update(){
     const belwalClass = document.getElementById("class");
     const aqua = document.getElementById("aqua");
     const dome = document.getElementById("dome");
+    const castle = document.getElementById("castle");
+    const factory = document.getElementById("factory");
     let coneGencheck = false;
     function check(){
         shops(coneGen, coneGenCost, coneGenerator);
@@ -243,6 +265,8 @@ function update(){
         shops(belwalClass, classCost, classGen);
         shops(aqua, aquaCost, aquaGen);
         shops(dome, domeCost, domeGen);
+        shops(castle, castleCost, castleGen);
+        shops(factory, factoryCost, factoryGen);
     }
 }
 function shops(element, cost, funct){
